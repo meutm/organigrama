@@ -1,0 +1,110 @@
+<!doctype html>
+<html lang="ro">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>MEU Timișoara 2027 | Organigramă</title>
+    <link rel="icon" type="image/png" href="assets/meu-albastru.png" />
+    <link rel="apple-touch-icon" href="assets/meu-albastru.png" />
+    <meta name="theme-color" content="#2354c9" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="styles.css?v=4" />
+  </head>
+  <body>
+    <div class="page-shell">
+      <header class="topbar" aria-label="MEU Timișoara 2027 organizational header">
+        <a class="brand" href="#org-map" aria-label="MEU Timișoara 2027">
+          <img src="assets/meu-albastru.png" alt="Mode European Union Timișoara" />
+          <span>
+            <strong data-i18n="brandTitle">MEU Timișoara 2027</strong>
+            <small data-i18n="brandSubtitle">Organigrama echipei executive și operaționale</small>
+          </span>
+        </a>
+
+        <div class="topbar-actions">
+          <button class="ghost-button" id="printButton" type="button" data-i18n="printLabel">Print / PDF</button>
+          <button class="language-switch" id="languageSwitch" type="button" aria-pressed="false">
+            <span>RO</span>
+            <span>EN</span>
+          </button>
+        </div>
+      </header>
+
+      <main>
+        <section class="intro-band" aria-labelledby="pageTitle">
+          <div class="intro-copy">
+            <p class="eyebrow" data-i18n="eyebrow">Model operațional 2027</p>
+            <h1 id="pageTitle" data-i18n="pageTitle">Organigrama MEU Timișoara 2027</h1>
+            <p data-i18n="pageLead">
+              O vedere clară asupra rolurilor, responsabilităților și liniilor de raportare pentru echipa de leadership.
+            </p>
+          </div>
+          <dl class="stats-grid" id="statsGrid"></dl>
+        </section>
+
+        <section class="control-panel" aria-label="Filtrare organigramă">
+          <label class="search-field">
+            <span data-i18n="searchLabel">Caută rol sau persoană</span>
+            <input id="searchInput" type="search" autocomplete="off" placeholder="ex. Logistics, George, CTO" />
+          </label>
+
+          <label class="filter-field">
+            <span data-i18n="unitLabel">Directorat</span>
+            <select id="unitFilter"></select>
+          </label>
+
+          <div class="view-actions" aria-label="Acțiuni vizualizare">
+            <button class="ghost-button is-active" id="showAllButton" type="button" data-i18n="showAllLabel">Toate rolurile</button>
+            <button class="ghost-button" id="clearFiltersButton" type="button" data-i18n="clearLabel">Resetare</button>
+            <span class="search-status" id="searchStatus" aria-live="polite"></span>
+          </div>
+        </section>
+
+        <section class="org-section" id="org-map" aria-labelledby="orgMapTitle">
+          <div class="section-heading">
+            <p class="eyebrow" data-i18n="mapEyebrow">Linii de raportare</p>
+            <h2 id="orgMapTitle" data-i18n="mapTitle">Harta ierarhică</h2>
+          </div>
+          <div class="org-legend" aria-label="Legendă linii organigramă">
+            <span><i class="legend-line is-solid"></i><b data-i18n="directLegend">raportare directă</b></span>
+            <span><i class="legend-line is-dotted"></i><b data-i18n="dottedLegend">linie punctată / rol suport</b></span>
+          </div>
+          <div class="org-map" id="orgMap"></div>
+        </section>
+
+        <section class="relationship-band" aria-labelledby="relationshipTitle">
+          <div class="section-heading">
+            <p class="eyebrow" data-i18n="relationshipEyebrow">Guvernanță</p>
+            <h2 id="relationshipTitle" data-i18n="relationshipTitle">Relații speciale și roluri cumulative</h2>
+          </div>
+          <div class="relationship-grid" id="relationshipGrid"></div>
+        </section>
+
+        <section class="directory-section" aria-labelledby="directoryTitle">
+          <div class="section-heading">
+            <p class="eyebrow" data-i18n="directoryEyebrow">Fișe scurte de rol</p>
+            <h2 id="directoryTitle" data-i18n="directoryTitle">Toate rolurile și responsabilitățile</h2>
+          </div>
+          <div class="directory" id="directory"></div>
+        </section>
+      </main>
+    </div>
+
+    <template id="personCardTemplate">
+      <article class="person-card">
+        <div class="photo-slot" aria-hidden="true"></div>
+        <div class="person-main">
+          <p class="unit-kicker"></p>
+          <h3></h3>
+          <p class="person-name"></p>
+          <p class="reports-line"></p>
+          <ul class="responsibility-list"></ul>
+        </div>
+      </article>
+    </template>
+
+    <script src="app.js?v=4"></script>
+  </body>
+</html>
